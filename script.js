@@ -1,15 +1,16 @@
+/* Get elements from the HTML */
 const foodForm = document.getElementById("food-form");
 const foodItems = document.getElementById("food-items");
 const totalCalories = document.getElementById("total-calories");
 const resetButton = document.getElementById("reset-button");
-
-let foods = [];
+// Load saved foods from localStorage //
+let foods = JSON.parse(localStorage.getItem("foods")) || [];
 let total = 0;
-
+/** Saves the current food records to localStorage, allowing the food data to remain after the page is refreshed.*/
 function saveFoods() {
-    document.cookie = `foods=${encodeURIComponent(JSON.stringify(foods))}; max-age=604800; path=/`;
+    localStorage.setItem("foods", JSON.stringify(foods));
 }
-
+ 
 function loadFoods() {
     const cookies = document.cookie.split("; ");
 
@@ -30,6 +31,7 @@ function loadFoods() {
     calculateTotal();
     displayFoods();
 }
+/** Creates and adds a new food to the foods array */
 
 function addFood(category, name, calories) {
 
@@ -47,6 +49,7 @@ function addFood(category, name, calories) {
     displayFoods();
 }
 
+/** Removes a food record from the foods array using its ID */
 function removeFood(id) {
 
     foods = foods.filter(function(food) {
@@ -57,7 +60,7 @@ function removeFood(id) {
     calculateTotal();
     displayFoods();
 }
-
+/** Updates the calorie value of an existing food record.  */
 function updateFood(id, newCalories) {
 
     const food = foods.find(function(food) {
@@ -72,7 +75,7 @@ function updateFood(id, newCalories) {
     calculateTotal();
     displayFoods();
 }
-
+/** Calculates the total from all food records, to display in the webpage. */
 function calculateTotal() {
 
     total = foods.reduce(function(sum, food) {
@@ -81,7 +84,9 @@ function calculateTotal() {
 
     totalCalories.textContent = total;
 }
-
+/** Displays all daved food records in the food list
+ * creates HTML elements for each food and adds them to the page
+ */
 function displayFoods() {
 
     foodItems.innerHTML = "";
@@ -109,7 +114,7 @@ function displayFoods() {
         foodItems.appendChild(li);
     });
 }
-
+/** Handles from submission when the user adds a new food.  */
 foodForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
@@ -122,6 +127,8 @@ foodForm.addEventListener("submit", function(event) {
 
     foodForm.reset();
 });
+
+/** Handles clicks on the butttons */
 
 foodItems.addEventListener("click", function(event) {
 
@@ -146,7 +153,7 @@ foodItems.addEventListener("click", function(event) {
 
 
 
-
+/** Resets the calorie tracker and removes all saved food records */
 resetButton.addEventListener("click", function() {
 
     foodForm.reset();
@@ -159,11 +166,11 @@ resetButton.addEventListener("click", function() {
 
     totalCalories.textContent = "0";
 
-    saveFoods();
+    localStorage.removeItem("foods");
+
 });
 
-
-
+/** Fetch API */
 
 async function fetchCalorieData() {
 
@@ -183,9 +190,8 @@ async function fetchCalorieData() {
     }
 }
 
-
-
-loadFoods();
-
-
+/** Calculate and display saved foods when the page loads */
+calculateTotal();
+displayFoods();
+/** Run the API request */
 fetchCalorieData()
