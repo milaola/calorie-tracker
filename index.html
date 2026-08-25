@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="calorie-tracker">
+        <h2>Calorie Tracker</h2>
+        <form id="food-form">
+            <label for="food-category">Food Category</label>
+            <select id="food-category" required>
+                <option value="Select a Food Category"></option>
+                <option value="Fruits">Fruits</option>
+                <option value="Carbohydrates">Carbs</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Proteins">Proteins</option>
+                <option value="Grains">Grains</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Drinks">Drinks</option>
+
+            </select>
+            <label for="food-name">Food Item:</label>
+            <input type="text" id="food-name" placeholder="Enter food name" required>
+
+            <label for="calories">Calories:</label>
+            <input type="number" id="calories" placeholder="Enter calories" min="0" required>
+
+
+            <button type="submit">Add Food</button>
+            <button type="button" id="reset-button">Reset</button>
+
+        </form>
+        
+        <section class="total-calories">
+            <h3> Total Calories </h3>
+            <p><span id="total-calories"></span></p>
+
+           <div class="food-list">
+
+            <section class="food-list">
+                <h3>Added Foods</h3>
+                <p>Your logged foods will appear here. </p>
+                <ul id="food-items">
+
+                </ul>
+            </section>
+
+
+ 
+        </section>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>

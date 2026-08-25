@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f1f5;
+    color: #33232d;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.calorie-tracker {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(96, 61, 80, 0.12);
+}
+
+
+.calorie-tracker > h2 {
+    text-align: center;
+    color: #603d50;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+
+#food-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#food-form label {
+    font-weight: bold;
+    margin-top: 8px;
+    color: #603d50;
+}
+
+#food-form input,
+#food-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d8c8d3;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fcfafc;
+}
+
+#food-form input:focus,
+#food-form select:focus {
+    outline: none;
+    border-color: #603d50;
+    box-shadow: 0 0 0 2px rgba(96, 61, 80, 0.15);
+}
+
+
+#food-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+
+#food-form button[type="submit"] {
+    background-color: #603d50;
+    color: white;
+}
+
+#food-form button[type="submit"]:hover {
+    background-color: #4d3040;
+}
+
+#reset-button {
+    background-color: #eadfe7;
+    color: #603d50;
+}
+
+#reset-button:hover {
+    background-color: #dccbd8;
+}
+
+
+.total-calories {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #eadfe7;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.total-calories h3 {
+    color: #603d50;
+    margin-bottom: 8px;
+}
+
+#total-calories {
+    font-size: 32px;
+    font-weight: bold;
+    color: #603d50;
+}
+
+
+.food-list {
+    margin-top: 30px;
+}
+
+.food-list h3 {
+    color: #603d50;
+    margin-bottom: 5px;
+}
+
+.food-list p {
+    color: #806c79;
+    margin-bottom: 15px;
+}
+
+
+#food-items {
+    list-style: none;
+}
+
+#food-items li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background-color: #f6f1f5;
+    border-left: 4px solid #603d50;
+    border-radius: 8px;
+}
+
+#food-items li span {
+    font-size: 14px;
+}
