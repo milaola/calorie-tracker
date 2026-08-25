@@ -44,9 +44,9 @@ The tracker supports the following categories:
 
 Food records are saves in the browser using localStorage, so they remain available when the page is refreshed. 
 
-##Project Structure
+## Project Structure
 
-``text
+``` text
 calorie-tracker
 
 index.html
